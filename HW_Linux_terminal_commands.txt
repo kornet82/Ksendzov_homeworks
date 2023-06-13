@@ -18,7 +18,17 @@ Linux terminal (GitBash) commands
 14) скопировать любые 2 файла, которые вы создали, в любую другую папку. cp {Что} {Куда}
 15) Найти файл по имени   find -name filename2.json
 16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает. 
-grep {паттерн} {filepath} {filepath2}
+
+grep {options} {pattern} {filepath} {filepath2} - синтаксис
+
+{options}
+-i - Игнор регистра символов
+-v - Инвертировать критерий
+-с - Вывести число совпадений
+-l - Вместо строк с совпадениями вывести имена файлов
+-L (--files-without-match) - выводит имена файлов, где не найдено совпадений
+-n (--line-number)- вывести в начале каждой строки с совпадением ее номер в файле 
+
 grep -r {pattern} . - рекурсивно по всем файлам
 grep -r {pattern} . > {filename}.txt - записать результаты в файл
 grep -r -i {pattern} . - отключить чувствительность к регистру
@@ -29,7 +39,7 @@ grep -r -w {pattern} . - ищет ТОЛЬКО pattern
  head -c45 {filename} - вывести первые 45 символов (проверка head -c45 {filename} | wc -c)
 18) вывести несколько последних строк из текстового файла
 tail -n5 {filename} - вывести последние 5 строк
-tail -f {filename} - Содержимое смотреть онлайн
+tail -f {filename} | grep {pattern} - Содержимое смотреть онлайн
 19) просмотреть содержимое длинного файла (команда less) изучите как она работает. 
 less {filepath}
 20) вывести дату и время 
@@ -40,9 +50,50 @@ timedatectl
 
 Задание *
 1) Отправить http запрос на сервер.
-curl http://162.55.220.72:5005/terminal-hw-request
-2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13 TODO
+pavel@pavel-U38DT:~$ curl http://162.55.220.72:5006/terminal-hw-request
+{
+  "Intro": "Hello!! This is your the first response from server", 
+  "Tasks": {
+    "Task_1": "Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)", 
+    "result": [
+      "Your_String", 
+      "Your_number"
+    ]
+  }
+}
 
-=====================
+pavel@pavel-U38DT:~$ curl http://162.55.220.72:5005/get_method?name="Pavel""&"age="41"
+[
+  "Pavel", 
+  "41"
+]
+
+
+
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13 
+
+Создаем файл script_hw1.txt (touch script_hw1.txt)
+
+Пишем туда команды (например cat > script_hw1.txt)
+
+
+==============================================
+#!/bin/bash
+
+
+mkdir D1
+cd D1
+mkdir foldername1 foldername2 foldername3
+cd foldername1
+touch filename1.txt filename2.txt filename3.txt filename1.json filename2.json
+mkdir child1 child2 child3
+ls
+mv filename1.txt ~/"Рабочий стол"/QA/Ksendsov_Course/Homeworks/D1/foldername1/child1/
+
+============================================
+Выходим из режима редактирования CTRL+C
+Делаем его исполняемым chmod ugo+x script_hw1.txt
+Запускаем ./script_hw1.txt
+
 
 
