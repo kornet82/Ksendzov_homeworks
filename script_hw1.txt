@@ -8,5 +8,4 @@ cd foldername1
 touch filename1.txt filename2.txt filename3.txt filename1.json filename2.json
 mkdir child1 child2 child3
 ls
-mv filename1.json ~/"Рабочий стол"/QA/Ksendsov_Course/Homeworks/D1/foldername1/child1/ 
-mv filename2.json ~/"Рабочий стол"/QA/Ksendsov_Course/Homeworks/D1/foldername1/child2/
+mv filename1.json ~/"Рабочий стол"/QA/Ksendsov_Course/Homeworks/D1/foldername1/child1/ && mv filename2.json ~/"Рабочий стол"/QA/Ksendsov_Course/Homeworks/D1/foldername1/child2/
